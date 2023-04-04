@@ -85,14 +85,14 @@ export const googleLoginController = async (req, res, next) => {
   const { tokenId } = req.body
   try{
     const resToken = await client.verifyIdToken({idToken: tokenId, audience: process.env.GOOGLE_AUTH_CLIENT})
-     const cred = resToken.getPayload()
+    const cred = resToken.getPayload()
     const {  
     email,
     name,
     given_name,
     family_name,
     picture,
-   email_verified
+    email_verified
     } = cred
      if(email_verified){
 

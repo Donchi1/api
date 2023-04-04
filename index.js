@@ -19,8 +19,9 @@ const app = express();
 dotenv.config();
 
 const connect = async () => {
+  const url = process.env.NODE_ENV === "development"? process.env.MONGO_DEV: process.env.MONGO_URL
   try {
-    await mongoose.connect(process.env.MONGO);
+    await mongoose.connect(url);
     console.log("Connected to mongoDB.");
   } catch (error) {
     throw error;
